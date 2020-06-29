@@ -32,6 +32,7 @@ function displayData(lat, lng, accu) {
 
 function displayLightData(value){
      var txt = document.getElementById("value");       // データを表示するdiv要素の取得
+     txt.innerHTML = value;
 }
  
 window.addEventListener('devicelight', (e) => {
@@ -41,19 +42,9 @@ window.addEventListener('devicelight', (e) => {
  // センサオブジェクトをnewする
 const sensor = new AmbientLightSensor();
 
-// 有効になった時の動作
-sensor.addEventListener('activate', (event) => {
- // console.log('AmbientLightSensorは有効になりました。');
-});
-
 // 値が変わった時の動作
 sensor.addEventListener('reading', (event) => {
   displayLightData("ルクス:" + sensor.illuminance);
-});
-
-// エラーの時の動作
-sensor.addEventListener('error', (event) => {
-  //console.log(event.error);
 });
 
 // 読み取り開始
