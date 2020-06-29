@@ -29,27 +29,14 @@ function displayData(lat, lng, accu) {
     txt.innerHTML = "緯度, 経度: " + lat + ", " + lng + "<br>"  // データ表示
                   + "精度: "       + accu;
 }
+
+function displayLightData(value){
+     var txt = document.getElementById("value");       // データを表示するdiv要素の取得
+}
  
- function update(illuminance) {
-    var colorPart = Math.min(255, illuminance).toFixed(0);
-}
-if ("AmbientLightSensor" in window) {
-    try {
-        var sensor = new AmbientLightSensor();
-        sensor.addEventListener("reading", function (event) {
-            update(sensor.illuminance);
-        });
-        sensor.start();
-    } catch (e) {
-        console.error(e);
-    }
-}
-if ("ondevicelight" in window) {
-    function onUpdateDeviceLight(event) {
-        update(event.value);
-    }
-    window.addEventListener("devicelight", onUpdateDeviceLight);
-}
+window.addEventListener('devicelight', (e) => {
+  displayLightData(e.value); // Lux
+});
  
 </script>
 </body>
