@@ -38,6 +38,27 @@ window.addEventListener('devicelight', (e) => {
   displayLightData(e.value); // Lux
 });
  
+ // センサオブジェクトをnewする
+const sensor = new AmbientLightSensor();
+
+// 有効になった時の動作
+sensor.addEventListener('activate', (event) => {
+ // console.log('AmbientLightSensorは有効になりました。');
+});
+
+// 値が変わった時の動作
+sensor.addEventListener('reading', (event) => {
+  displayLightData(sensor.illuminance);
+});
+
+// エラーの時の動作
+sensor.addEventListener('error', (event) => {
+  //console.log(event.error);
+});
+
+// 読み取り開始
+sensor.start();
+ 
 </script>
 </body>
 </html>
