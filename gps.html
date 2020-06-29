@@ -8,8 +8,8 @@
  
 <body>
 <div id="txt">ここにデータを表示</div>                 <!-- データを表示するdiv要素 -->
- 
- <p>Current light intensity is <b id="value">データ</b>.</p>
+</br>
+<div id="value">データ</div>
  
 <script>
 // GPS センサの値が変化したら何らか実行する geolocation.watchPosition メソッド
@@ -48,7 +48,7 @@ sensor.addEventListener('activate', (event) => {
 
 // 値が変わった時の動作
 sensor.addEventListener('reading', (event) => {
-  displayLightData(sensor.illuminance);
+  displayLightData("ルクス:" + sensor.illuminance);
 });
 
 // エラーの時の動作
