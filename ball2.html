@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+ <meta charset="utf-8">
+</head>
+<body>
+  <div id="ball">●</div>
+  <script>
+  var ball = document.getElementById("ball"); // ボールは文字で描く
+  ball.style.position = "absolute";
+  var x = 200; // ボールの x 座標
+
+  window.addEventListener(   // スマホが傾いたらmoveBall関数が呼ばれるようにする
+    "deviceorientation", moveBall
+  );
+
+  function moveBall(event) { // 傾いた時に呼ばれる関数
+     x = event.gamma; // どれくらい傾いたかが event.gammaで分かる
+     ball.style.left = x + "px"; // ボールの位置をピクセル単位で指定する
+  }
+  </script>
+</body>
+</html>
