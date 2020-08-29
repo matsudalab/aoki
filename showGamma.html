@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head> <meta charset="utf-8"></head>
+<body>
+  <div id="label"></div>
+  <script>
+  var label = document.getElementById("label"); 
+
+  window.addEventListener(   // スマホが傾いたらmoveBall関数が呼ばれるようにする
+    "deviceorientation", moveBall
+  );
+
+  function moveBall(event) { // 傾いた時に呼ばれる関数
+     label.innerHTML = event.gamma; // ボールの位置をピクセル単位で指定する
+  }
+  </script>
+</body>
+</html>
